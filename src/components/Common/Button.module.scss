@@ -1,0 +1,23 @@
+.btn{
+    border: none;
+    padding: 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    flex: 1;
+    gap: 10px;
+
+    &__primary{
+        background-color: #db4c3f;
+        color: white;
+    }
+    &__secondary{
+        background-color: rgb(220,220,220);
+        color: rgb(0, 0, 0);
+    }
+}
+// .header__control__bar{
+
+// }
+// .control__bar__icon{
+    
+// }

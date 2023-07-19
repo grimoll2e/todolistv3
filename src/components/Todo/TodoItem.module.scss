@@ -1,0 +1,62 @@
+$grey:rgb(234,234,234);
+
+.todo__item__container{
+    cursor: pointer;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+
+    &>p{
+        flex: 1;
+    }
+    &:hover{
+        background-color: $grey;
+    }
+}
+
+.checkbox__container{
+    border-color: rgb(255, 0, 0);
+    color: rgb(0, 0, 0);
+    height: 16px;
+    width: 16px;
+    display: block;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 16px;
+    text-align: center;
+    line-height: 16px;
+}
+.checkbox_icon{
+    display: none;
+    font-size: 12px;
+}
+.checkbox_icon__done{
+    display: inline;
+    font-size: 12px;
+}
+.checkbox__container:hover{
+    .checkbox_icon{
+        display: inline;
+        color: #6d6d6d;
+    }
+}
+.edit__icon,
+.delete__icon{
+    color: gray;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+
+    & :hover{
+        color: #343434;
+    }
+}
+.done{
+    text-decoration: line-through;
+}
+.date__text{
+    color: gray;
+    font-size: 12px;
+}
