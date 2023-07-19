@@ -10,7 +10,8 @@ function App() {
 
   // logic state
   const [todos, setTodos] = useState([])
-  const [filterList, setFilterList] = useState([])
+  const [filterList, setTodosfilter] = useState([])
+  
   // useEffect data from database
   useEffect(() => {
 
@@ -21,7 +22,7 @@ function App() {
         // sync whit Internal service
         let todoList = response.data.todos
         setTodos(todoList)
-        setFilterList(todoList)
+        setTodosfilter(todoList)
       } catch (err) {
         // error handler
         console.log(err.response.status)
@@ -39,20 +40,20 @@ function App() {
 
     // filter logic : schma for filter yyyy-mm-dd
     if (index === 0) {
-      setFilterList(todos)
+      setTodosfilter(todos)
     } else if (index === 1) {
       filterTodo = todos.filter(todoObj => todoObj.date === nowStr)
-      setFilterList(filterTodo)
+      setTodosfilter(filterTodo)
     } else if (index === 2) {
       filterTodo = todos.filter(todoObj => todoObj.date >= nowStr && todoObj.date <= nextSevenStr)
     }
     // setTodos(filterTodo)
-    setFilterList(filterTodo)
+    setTodosfilter(filterTodo)
   }
 
   const handleSearch = (searchText) => {
     const newTodo = todos.filter((todoObj) => todoObj.task.toLocaleLowerCase().includes(searchText))
-    setFilterList(newTodo)
+    setTodosfilter(newTodo)
 
   }
 
@@ -60,7 +61,7 @@ function App() {
     <div className="container">
       <Header onSearchText={handleSearch} />
       <Sidebar onSelectTab={handleFilterLists} />
-      <TodoContent todos={filterList} setTodos={setTodos} setFilterList={setFilterList} />
+      <TodoContent todos={filterList} setTodos={setTodos} setFilterList={setTodosfilter} />
     </div>
   );
 }

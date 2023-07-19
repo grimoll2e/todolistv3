@@ -3,19 +3,23 @@ import { useState } from 'react';
 import { HiCheck, HiPencil, HiTrash } from "react-icons/hi";
 import { TodoForm } from './TodoForm';
 import { getFormattedDate } from '../../utils/DateUtils'
+import { useContext } from 'react';
+import { TodoContext } from '../../contexts/TodoContext';
 
 
-export function TodoItem({ todo, onEditTodo, onDeleteTodo }) {
+export function TodoItem({ todo }) {
+    const { deleteTodo ,editTodo} = useContext(TodoContext)
+
     const [isEdit, setIsEdit] = useState(false)
     //แก้แล้ว
     const handleClickCheckIcon = () => setIsEdit(true)
     //แก้แล้ว
     const handleClickCheckBox = () => {
-        onEditTodo(todo.id, { ...todo, status: !todo.status })
+        editTodo(todo.id, { ...todo, status: !todo.status })
     }
     //แก้แล้ว
     const handleClickDeleteBox = () => {
-        onDeleteTodo(todo.id)
+        deleteTodo(todo.id)
     }
     //แก้แล้ว
 
@@ -40,7 +44,6 @@ export function TodoItem({ todo, onEditTodo, onDeleteTodo }) {
                     submitText='Edit Take'
                     onSetShow={setIsEdit}
                     oldTodo={todo}
-                    onEditTodo={onEditTodo}
                 />}
         </>
     )

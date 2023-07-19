@@ -1,16 +1,18 @@
 import { TodoItem } from './TodoItem';
+import { useContext } from 'react';
+import { TodoContext } from '../../contexts/TodoContext';
 
 
-export function TodoLists({lists,onEditTodo,onDeleteTodo}) {
+export function TodoLists() {
+    const {todosFilter} = useContext(TodoContext)
+
  //แก้แล้ว
     return (
         <ul>
-            {lists.map((item) => (
+            {todosFilter.map((item) => (
                 <TodoItem 
                 todo={item}
                 key={item.id}
-                onEditTodo={onEditTodo}
-                onDeleteTodo={onDeleteTodo}
                 />
             ))}
         </ul>

@@ -1,25 +1,22 @@
 import styles from './TodoForm.module.scss'
 import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
-// import axios from 'axios';
-// import { createTodoAPI } from '../../service/todoService';
-// import { validate } from 'uuid';
+import { useContext } from 'react';
+import { TodoContext } from '../../contexts/TodoContext';
+import PropTypes from 'prop-types';
 
-// TodoForm.propTypes = {
-//     submitText: PropTypes.string.isRequired,
-//     onSetIsShow: PropTypes.func.isRequired,
-//     onAddtodo: PropTypes.func,
-//     todo: PropTypes.oneOfType([
-//         PropTypes.object,
-//     ])
-// }
+TodoForm.propTypes = {
+    submitText: PropTypes.string.isRequired,
+    onSetShow: PropTypes.func.isRequired,
+    todo: PropTypes.oneOfType([
+        PropTypes.object,
+    ])
+}
 
-export function TodoForm({ submitText, onSetShow, onAddTodo, oldTodo, onEditTodo }) {
+export function TodoForm({ submitText, onSetShow, oldTodo }) {
+    const { addTodo ,editTodo} = useContext(TodoContext)
 
     const [task, setTask] = useState(oldTodo?.task || '')
     const [error, setError] = useState(false)
-    // const [date, setDate] = useState(null)
-
 
     // แก้แล้ว
     const validate = (Text) => {
@@ -46,11 +43,11 @@ export function TodoForm({ submitText, onSetShow, onAddTodo, oldTodo, onEditTodo
         e.preventDefault()
         let validTask = validate(task)
         if (validTask && !oldTodo) {
-            onAddTodo?.(task)
+            addTodo?.(task)
             onSetShow(false)
             return;
         } else if (validTask && oldTodo) {
-            onEditTodo(oldTodo.id, {...oldTodo,task})
+            editTodo(oldTodo.id, { ...oldTodo, task })
             onSetShow(false)
         }
     }
