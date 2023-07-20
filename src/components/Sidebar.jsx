@@ -1,7 +1,5 @@
-// import { object } from "prop-types";
-import { useState } from "react";
 import { FaInbox, FaCalendar, FaCalendarAlt, FaChevronDown } from "react-icons/fa";
-import { useContext } from 'react';
+import { useContext ,useState } from 'react';
 import { TodoContext } from '../contexts/TodoContext';
 
 

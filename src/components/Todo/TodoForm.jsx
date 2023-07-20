@@ -1,7 +1,6 @@
-import styles from './TodoForm.module.scss'
-import React, { useState } from 'react';
-import { useContext } from 'react';
+import React, { useState ,useContext} from 'react';
 import { TodoContext } from '../../contexts/TodoContext';
+import styles from './TodoForm.module.scss'
 import PropTypes from 'prop-types';
 
 TodoForm.propTypes = {

@@ -1,7 +1,5 @@
-import React from "react";
-import { useState } from "react";
+import { useState ,useContext } from "react";
 import { FaHome, FaSearch } from "react-icons/fa";
-import { useContext } from 'react';
 import { TodoContext } from '../contexts/TodoContext';
 
 export function Header() {

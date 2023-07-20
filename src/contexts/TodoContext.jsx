@@ -96,7 +96,6 @@ function TodoContextProvider(props) {
     } else if (selectedIndex === 1) {
       const newTodo = todos.filter((todo) => todo.date === today)
       setTodosfilter(newTodo)
-
     } else if (selectedIndex === 2) {
       const newTodo = todos.filter(todo => todo.date >= today && todo.date <= nextSevenday)
       setTodosfilter(newTodo)
@@ -109,18 +108,16 @@ function TodoContextProvider(props) {
   }
 
 
-  const sharedObj = {
-    todos: todos,
-    todosFilter: todosFilter,
-    addTodo: addTodo,
-    editTodo: editTodo,
-    deleteTodo: deleteTodo,
-    selectList: selectList,
-    searchTodo: searchTodo
-  }
-
   return (
-    <TodoContext.Provider value={sharedObj}>{props.children}</TodoContext.Provider>
+    <TodoContext.Provider value={{
+      todos,
+      todosFilter,
+      addTodo,
+      editTodo,
+      deleteTodo,
+      selectList,
+      searchTodo
+    }}>{props.children}</TodoContext.Provider>
   )
 }
 

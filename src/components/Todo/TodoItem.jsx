@@ -1,10 +1,9 @@
-import styles from './TodoItem.module.scss'
-import { useState } from 'react';
-import { HiCheck, HiPencil, HiTrash } from "react-icons/hi";
-import { TodoForm } from './TodoForm';
-import { getFormattedDate } from '../../utils/DateUtils'
-import { useContext } from 'react';
+import { useState ,useContext } from 'react';
 import { TodoContext } from '../../contexts/TodoContext';
+import styles from './TodoItem.module.scss'
+import { TodoForm } from './TodoForm';
+import { HiCheck, HiPencil, HiTrash } from "react-icons/hi";
+import { getFormattedDate } from '../../utils/DateUtils'
 
 
 export function TodoItem({ todo }) {
