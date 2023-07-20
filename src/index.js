@@ -10,7 +10,6 @@ root.render(
   <TodoContextProvider>
     <App />
   </TodoContextProvider>
-
 );
 // root.render(
 //   <React.StrictMode>

@@ -1,13 +1,13 @@
-import { useState ,useContext } from 'react';
-import { TodoContext } from '../../contexts/TodoContext';
+import { useState } from 'react';
 import styles from './TodoItem.module.scss'
 import { TodoForm } from './TodoForm';
 import { HiCheck, HiPencil, HiTrash } from "react-icons/hi";
 import { getFormattedDate } from '../../utils/DateUtils'
+import { useTodo } from '../../hooks/useTodos';
 
 
 export function TodoItem({ todo }) {
-    const { deleteTodo, editTodo } = useContext(TodoContext)
+    const { deleteTodo, editTodo } = useTodo()
 
     const [isEdit, setIsEdit] = useState(false)
     //แก้แล้ว

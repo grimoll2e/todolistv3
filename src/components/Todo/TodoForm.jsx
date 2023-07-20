@@ -1,7 +1,7 @@
-import React, { useState ,useContext} from 'react';
-import { TodoContext } from '../../contexts/TodoContext';
+import React, { useState } from 'react';
 import styles from './TodoForm.module.scss'
 import PropTypes from 'prop-types';
+import { useTodo } from '../../hooks/useTodos';
 
 TodoForm.propTypes = {
     submitText: PropTypes.string.isRequired,
@@ -12,7 +12,7 @@ TodoForm.propTypes = {
 }
 
 export function TodoForm({ submitText, onSetShow, oldTodo }) {
-    const { addTodo, editTodo } = useContext(TodoContext)
+    const { addTodo, editTodo } = useTodo()
 
     const [task, setTask] = useState(oldTodo?.task || '')
     const [error, setError] = useState(false)

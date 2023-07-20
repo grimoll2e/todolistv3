@@ -1,15 +1,15 @@
 import { FaInbox, FaCalendar, FaCalendarAlt, FaChevronDown } from "react-icons/fa";
-import { useContext ,useState } from 'react';
-import { TodoContext } from '../contexts/TodoContext';
+import { useState } from 'react';
+import { useTodo } from "../hooks/useTodos";
 
 
 
 export function Sidebar() {
-  const {selectList} = useContext(TodoContext)
-  
+  const { selectList } = useTodo()
+
   const [activeIndex, setActiveIndex] = useState(0)
 
-  const handleSelectTab = (index) =>{
+  const handleSelectTab = (index) => {
     setActiveIndex(index)
     selectList(index)
   }
@@ -34,14 +34,14 @@ export function Sidebar() {
       <section className="sidebar__generic">
         <ul className="generic__list">
           {/* ตัวอย่าง useState classname */}
-          {genericLists.map((listObj,Index)=>(
+          {genericLists.map((listObj, Index) => (
             <li className={`${activeIndex === Index ? 'active' : ''}`} onClick={() => handleSelectTab(Index)} key={listObj.title}>
-            <span>
-              {listObj.icon}
-            </span>
-            <h6>{listObj.title}</h6>
+              <span>
+                {listObj.icon}
+              </span>
+              <h6>{listObj.title}</h6>
             </li>
-            )
+          )
           )}
         </ul>
       </section>

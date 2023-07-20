@@ -1,10 +1,9 @@
 import { TodoItem } from './TodoItem';
-import { useContext } from 'react';
-import { TodoContext } from '../../contexts/TodoContext';
+import { useTodo } from '../../hooks/useTodos';
 
 
 export function TodoLists() {
-    const { todosFilter } = useContext(TodoContext)
+    const { todosFilter } = useTodo()
 
     //แก้แล้ว
     return (
