@@ -1,15 +1,19 @@
 // import { object } from "prop-types";
 import { useState } from "react";
 import { FaInbox, FaCalendar, FaCalendarAlt, FaChevronDown } from "react-icons/fa";
+import { useContext } from 'react';
+import { TodoContext } from '../contexts/TodoContext';
 
 
 
-export function Sidebar({onSelectTab}) {
+export function Sidebar() {
+  const {selectList} = useContext(TodoContext)
+  
   const [activeIndex, setActiveIndex] = useState(0)
 
   const handleSelectTab = (index) =>{
     setActiveIndex(index)
-    onSelectTab(index)
+    selectList(index)
   }
 
   const genericLists = [

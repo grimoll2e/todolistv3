@@ -1,13 +1,17 @@
 import React from "react";
 import { useState } from "react";
 import { FaHome, FaSearch } from "react-icons/fa";
+import { useContext } from 'react';
+import { TodoContext } from '../contexts/TodoContext';
 
-export function Header({onSearchText}) {
+export function Header() {
   const[searchValue,setSearchValue]=useState('')
+
+  const {searchTodo}  = useContext(TodoContext)
 
   const handleChange=(e)=>{
     setSearchValue(e.target.value)
-    onSearchText(e.target.value)
+    searchTodo(e.target.value)
   }
 
   return (

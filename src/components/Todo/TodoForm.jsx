@@ -13,7 +13,7 @@ TodoForm.propTypes = {
 }
 
 export function TodoForm({ submitText, onSetShow, oldTodo }) {
-    const { addTodo ,editTodo} = useContext(TodoContext)
+    const { addTodo, editTodo } = useContext(TodoContext)
 
     const [task, setTask] = useState(oldTodo?.task || '')
     const [error, setError] = useState(false)

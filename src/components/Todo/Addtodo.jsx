@@ -3,21 +3,21 @@ import { useState } from 'react'
 import { TodoForm } from './TodoForm'
 
 export function Addtodo() {
-    const [isShow,setIsShow] = useState(false)
+    const [isShow, setIsShow] = useState(false)
 
-    const handleClickToAddTask = () =>{
+    const handleClickToAddTask = () => {
         setIsShow(!isShow)
     }
     return (
         <>
-            {!isShow?(<div className={styles.add__todo} onClick={handleClickToAddTask}>
+            {!isShow ? (<div className={styles.add__todo} onClick={handleClickToAddTask}>
                 <span>+</span>
                 <h3>Add task</h3>
-            </div>):(
-            <TodoForm 
-            onSetShow={handleClickToAddTask} 
-            submitText='Add task' 
-            />
+            </div>) : (
+                <TodoForm
+                    onSetShow={handleClickToAddTask}
+                    submitText='Add task'
+                />
             )}
         </>
     )

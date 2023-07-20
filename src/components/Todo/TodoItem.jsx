@@ -8,7 +8,7 @@ import { TodoContext } from '../../contexts/TodoContext';
 
 
 export function TodoItem({ todo }) {
-    const { deleteTodo ,editTodo} = useContext(TodoContext)
+    const { deleteTodo, editTodo } = useContext(TodoContext)
 
     const [isEdit, setIsEdit] = useState(false)
     //แก้แล้ว

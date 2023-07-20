@@ -1,5 +1,6 @@
 import { useEffect, useState, createContext } from "react";
 import * as TodoAPIServices from '../service/todoService'
+import { getSevenDayRange } from "../utils/DateUtils";
 
 // createContext => context Obj (name)ใชช้ได้ 2 ที
 // #1 provider : wrapper component => shared data,logic
@@ -11,6 +12,12 @@ function TodoContextProvider(props) {
 
   const [todos, setTodos] = useState([])
   const [todosFilter, setTodosfilter] = useState([])
+
+  //   เรียกใช้ 1 ครั้งตอนเริ่มโปรแกรม
+  useEffect(() => {
+    fetchAllTodo()
+    return () => console.log('Clear up')
+  }, [])
 
   // data from database
   async function fetchAllTodo() {
@@ -26,11 +33,6 @@ function TodoContextProvider(props) {
       console.log(err.response.status)
     }
   }
-  //   เรียกใช้ 1 ครั้งตอนเริ่มโปรแกรม
-  useEffect(() => {
-    fetchAllTodo()
-    return () => console.log('Clear up')
-  }, [])
 
   const addTodo = async (task) => {
     try {
@@ -70,7 +72,7 @@ function TodoContextProvider(props) {
     }
 
   }
-  // น่าจะได้ ?
+
   const deleteTodo = async (todoID) => {
     try {
       await TodoAPIServices.deleteTodoAPI(todoID)
@@ -85,7 +87,37 @@ function TodoContextProvider(props) {
   }
 
 
-  const sharedObj = { magic: 42, todos: todos, todosFilter: todosFilter, addTodo: addTodo ,editTodo:editTodo,deleteTodo:deleteTodo}
+  // function 
+  const selectList = (selectedIndex) => {
+    const [today, nextSevenday] = getSevenDayRange()
+    // filter logic : schma for filter yyyy-mm-dd
+    if (selectedIndex === 0) {
+      setTodosfilter(todos)
+    } else if (selectedIndex === 1) {
+      const newTodo = todos.filter((todo) => todo.date === today)
+      setTodosfilter(newTodo)
+
+    } else if (selectedIndex === 2) {
+      const newTodo = todos.filter(todo => todo.date >= today && todo.date <= nextSevenday)
+      setTodosfilter(newTodo)
+    }
+  }
+
+  const searchTodo = (searchText) => {
+    const newTodo = todos.filter((todo) => todo.task.toLocaleLowerCase().includes(searchText.toLocaleLowerCase()))
+    setTodosfilter(newTodo)
+  }
+
+
+  const sharedObj = {
+    todos: todos,
+    todosFilter: todosFilter,
+    addTodo: addTodo,
+    editTodo: editTodo,
+    deleteTodo: deleteTodo,
+    selectList: selectList,
+    searchTodo: searchTodo
+  }
 
   return (
     <TodoContext.Provider value={sharedObj}>{props.children}</TodoContext.Provider>
