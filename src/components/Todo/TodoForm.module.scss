@@ -2,7 +2,7 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    // background-color:  rgb(220,220,220);
+    background-color:  rgb(255, 255, 255);
     border-radius: 8px;
     gap: 10px;
     border: 1px solid rgb(220,220,220);
@@ -13,15 +13,24 @@
     padding: 10px;
     width: 100%;
     font-size: 14px;
+    background-color: whitesmoke;
 
     &>focus{
         outline: none;
     }
 }
+.todo__form__date{
+    width: 20%;
+    top: auto;
+    background-color: whitesmoke;
+}
 .todo__form__footer{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 10px;
+    border-top: 1px solid;
+    color: rgb(148, 136, 135);
 }
 .todo__error{
     justify-content: start;

@@ -16,6 +16,7 @@ export function TodoForm({ submitText, onSetShow, oldTodo }) {
 
     const [task, setTask] = useState(oldTodo?.task || '')
     const [error, setError] = useState(false)
+    // const [date ,setDate]=useState()
 
     // แก้แล้ว
     const validate = (Text) => {
@@ -34,9 +35,9 @@ export function TodoForm({ submitText, onSetShow, oldTodo }) {
         // handleChangeDate()
     }
     //แก้แล้ว
-    // const handleChangeDate = (e) => {
-    //     console.log(e.target.value)
-    // }
+    const handleChangeDate = (e) => {
+        console.log(e.target.value)
+    }
     //แก้แล้ว
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -58,6 +59,9 @@ export function TodoForm({ submitText, onSetShow, oldTodo }) {
     return (
         <form onSubmit={handleSubmit} className={styles.todo__form__container}>
             <input className={styles.todo__form__input} placeholder='Task Name' value={task} onChange={handleChangeInput} />
+            <div className={styles.todo__form__date}>
+                <input type="date" onChange={handleChangeDate}/>
+            </div>
             <div className={styles.todo__form__footer}>
                 {error && <p className={styles.todo__error}> Title is required</p>}
                 <div className={styles.todo__form__buttons}>
