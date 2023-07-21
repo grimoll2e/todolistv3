@@ -1,17 +1,14 @@
 import "./App.scss";
-import { Header } from '../components/Header';
-import { Sidebar } from "../components/Sidebar";
-import { TodoContent } from "../components/Todo/TodoContent";
+// import TodoPage from "../pages/TodoPage";
+import LoginPage from '../pages/LoginPage';
+// import RegisterPage from '../pages/RegisterPage'
+// import ProfilePage from '../pages/ProfilePage'
 
 function App() {
 
-  return (
-    <div className="container">
-      <Header />
-      <Sidebar />
-      <TodoContent />
-    </div>
-  );
+  // return <TodoPage/>;
+  return <LoginPage/>;
+  // return <RegisterPage/>;
 }
 
 export default App;
