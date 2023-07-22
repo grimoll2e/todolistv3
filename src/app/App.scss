@@ -95,7 +95,23 @@ $header-height: 44px;
       font-size: 22px;
     }
   }
+  &__projects{
+    flex: 1;
+  }
+  &__pagination{
+    display: flex;
+    // background-color: aqua;
+    flex-direction: row;
+    gap: 10px;
+    & > button{
+      width: auto;
+      background-color: rgb(158, 158, 153);
+      border-radius: 4px;
+      padding: 10px;
+    }
+  }
 }
+
 
 .project__lists,
 .generic__list {

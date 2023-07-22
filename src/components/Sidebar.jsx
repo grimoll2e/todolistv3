@@ -67,6 +67,12 @@ export function Sidebar() {
           </li>
         </ul>
       </section>
+      <section className="sidebar__pagination">
+         <button >5</button>
+         <button >10</button>
+         <button >25</button>
+         <button >Log Out</button>
+      </section>
     </aside>
   )
 }
