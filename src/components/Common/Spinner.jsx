@@ -1,10 +1,16 @@
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-import { Translate } from '@mui/icons-material';
+import  {styled}  from 'styled-components';
+
+const Wrapper = styled.div`
+    position : relative;
+    height : 100vh;
+    // background-color : red;
+`
 
 export function Spinner() {
     return (
-        <div className='relative h-screen'>
+        <Wrapper className='relative h-screen'>
             <Box sx={{ display: 'flex', 
             position: 'absolute', 
             top: '50%', 
@@ -12,6 +18,7 @@ export function Spinner() {
             transform: `translate(-${50}%,-${50}%)` }}>
                 <CircularProgress />
             </Box>
-        </div>
+            <p>Loading...</p>
+        </Wrapper>
     );
 }
